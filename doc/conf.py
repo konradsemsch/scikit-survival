@@ -82,6 +82,9 @@ copyright = '2015-2021, Sebastian Pölsterl'
 #
 # The full version, including alpha/beta/rc tags.
 if on_rtd:
+    rtd_version = os.environ['READTHEDOCS_VERSION']
+    if rtd_version.startswith('v'):
+        os.environ['SETUPTOOLS_SCM_PRETEND_VERSION'] = rtd_version[1:]
     release = get_version(root='..', relative_to=__file__)
 else:
     import sksurv
